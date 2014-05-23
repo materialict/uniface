@@ -1,0 +1,953 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Created by UNIFACE - (C) Compuware Corporation -->
+<!DOCTYPE UNIFACE PUBLIC "UNIFACE.DTD" "UNIFACE.DTD">
+<UNIFACE release="9.6" xmlengine="2.0">
+<TABLE>
+<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
+ rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
+<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
+<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
+<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
+<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
+<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
+<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
+<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
+</DSC>
+<OCC>
+<DAT name="UTIMESTAMP">2014-03-04T19:01:06.84</DAT>
+<DAT name="USUB">I</DAT>
+<DAT name="UVAR">MATERIAL</DAT>
+<DAT name="ULABEL">IP_STRING</DAT>
+<DAT name="ULAN">P</DAT>
+<DAT name="UDESCR" xml:space='preserve'>String functions</DAT>
+<DAT name="UTEXT" xml:space='preserve'>entry IP_REPLACE_ALL
+   ; @name = IP_REPLACE_ALL
+   ; @description = replace all the values in a string in a while loop until there are none left
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   
+   params
+      string p_string  : inout 
+      string p_search  : in
+      string p_replace : in 
+   endparams 
+
+   while ($scan(p_string, p_search) &gt; 0)
+      p_string = $replace(p_string, 1, p_search, p_replace, -1)
+   endwhile 
+
+   return(0)
+end
+
+entry IP_CUT_STRING
+   ; @name = IP_CUT_STRING
+   ; @description = Cut a string into two pieces. One being the part between the search start and search end value. The other the remaining string concatenated. 
+   ; @version = 0.1
+   ; @author = Dennis E.J. Vorst
+   params 
+      string p_string_in    : in
+      string p_search_start : in
+      string p_search_end   : in
+      string p_eol_char     : in
+      string p_string_out   : out
+      string p_cut_string   : out
+   endparams 
+   variables 
+      numeric v_position, v_length
+      string v_string_in
+   endvariables 
+
+   ; init 
+   v_position  = $scan(p_string_in, p_search_start)
+   v_length    = $length(p_search_end)
+   v_string_in = p_string_in
+
+   if (v_position &gt; 0)
+      ; add the previous part of the trigger to a string for further processing 
+      p_string_out = $concat(p_string_out, p_string_in[1, v_position - 1])
+      ; cut the rest of the trigger from the starting point of the found stuff
+      p_string_in = p_string_in[v_position]
+
+      ; get the end part 
+      v_position = $scan(p_string_in, p_search_end)
+      ; if not found then put the rest in 
+      if (v_position = 0)
+         ; end string not found. Return the entire string 
+         p_string_out = v_string_in
+         p_cut_string = ""
+      else 
+         p_cut_string = p_string_in[1, v_position + v_length - 1]
+         p_string_out = $concat(p_string_out, p_eol_char, p_string_in[v_position + v_length])
+      endif
+   else 
+      ; searchstring is not found 
+      p_string_out = p_string_in
+      p_cut_string = ""
+
+   endif
+
+   return(0)
+end ; IP_CUT_STRING
+
+entry IP_CHE_CASE
+   ; @name = IP_CHE_CASE
+   ; @description = Check the case of the given string. 
+   ; @params = p_string can be any string. p_case can be either UPPER, LOWER or CAMEL. p_found returns true if the string complies with the p_case entered.
+   ; @deprecated 
+   ; @additiobal = this function is deprecated. Please use the function in the service S_MIS_OBJECt
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string  p_string  : in 
+      string  p_case    : in
+      boolean p_isfound : out
+   endparams
+
+   ; prerequisites
+   if (p_string = "")
+;      message/nobeep "IP_CHE_CASE - Empty string."
+      p_isfound = 1
+      return(0)
+   endif 
+   if (p_case = "")
+      ; if the case is empty we automatically comply
+;      message/nobeep "IP_CHE_CASE - Empty case."
+      p_isfound = 1
+      return(0)
+   endif 
+
+   ; init 
+   p_isfound = 0
+
+   ; the actual checking 
+   selectcase p_case 
+      case "CAMEL"
+         ; camelcase happens when the string is neither uppercase nor lowercase 
+         ; example of camelcase: CamelCase
+         if (p_string != $lowercase(p_string) &amp; p_string != $uppercase(p_string))
+            p_isfound = 1
+         endif 
+      case "LOWER"
+         if (p_string = $lowercase(p_string))
+            p_isfound = 1
+         endif 
+      case "UPPER"
+         if (p_string = $uppercase(p_string))
+            p_isfound = 1
+         endif 
+      elsecase 
+         debug
+         message/nobeep $concat("IP_CHE_CASE - Unknown case ", p_case)
+         return(0)
+   endselectcase 
+   return(0)
+end ; IP_CHE_CASE
+
+entry IP_LISTTOSTRING
+   ; @name = IP_LISTTOSTRING
+   ; @description = Create a string from the list
+   ; @params = p_list can be a list. It cannot be a key-valuepair list or a list within a list. p_case can be any string. p_found returns the string with the items as orderd in the list, separated by a value of the separation string. 
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string p_list      : in 
+      string p_separator : in
+      string p_string    : out
+   endparams
+   variables
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_list = "")
+;      message/nobeep "IP_LISTTOSTRING - Empty string."
+      return(0)
+   endif 
+   if ($scan(p_list, "=") &gt; 0)
+      message/nobeep "IP_LISTTOSTRING - List entered contains key-valuepairs."
+      return(0)      
+   endif 
+   if ($scan(p_list, "&uNOT;&uSEP;") &gt; 0)
+      message/nobeep "IP_LISTTOSTRING - List entered contains lists within lists."
+      return(0)      
+   endif 
+
+   ; the actual processing
+   forlist v_item in p_list
+      p_string = $concat(p_string, v_item, p_separator)
+   endfor
+
+   ; cut the separator from the end of the string 
+   p_string = $rtrim(p_string, p_separator)
+
+   return(0)
+end ; IP_LISTTOSTRING
+
+entry IP_STRINGTOLIST
+   ; @name = IP_STRINGTOLIST
+   ; @description = Create a list from a string
+   ; @params = p_string can be a string. p_list returns a list of the string separated at the places where the separator was found.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string p_string    : in 
+      string p_separator : in
+      string p_list      : out
+   endparams
+   variables
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_STRINGTOLIST - Empty string."
+      return(0)
+   endif 
+   if ($scan(p_string, "&uSEP;") &gt; 0)
+      message/nobeep "IP_STRINGTOLIST - String entered is already a list."
+      return(0)      
+   endif 
+   if (p_separator = "")
+      message/nobeep "IP_STRINGTOLIST - Separator cannot be empty."
+      return(0)      
+   endif 
+   if ($scan(p_separator, "&uSEP;") &gt; 0)
+      message/nobeep "IP_STRINGTOLIST - Separator cannot be &lt;gold&gt; + &lt;semicolon&gt;."
+      return(0)      
+   endif 
+
+   ; the actual processing
+   p_list = $replace(p_string, 1, p_separator, "&uSEP;", -1)
+
+   return(0)
+end ; IP_STRINGTOLIST
+
+entry IP_COUNT_STRING
+   ; @name = IP_COUNT_STRING
+   ; @description = Count the number of times a string is found in another string.
+   ; @params = p_string can be any string. p_case can be either UPPER, LOWER or CAMEL. p_found returns true if the string complies with the p_case entered.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string  p_string : in 
+      string  p_search : in
+      boolean p_case   : in
+      numeric p_found  : out
+   endparams
+   variables 
+      numeric v_pointer, v_length
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_COUNT_STRING - Empty string."
+      return(0)
+   endif 
+   if (p_search = "")
+;      message/nobeep "IP_COUNT_STRING - Empty case."
+      return(0)
+   endif
+   ; not case sensitive  
+   if (!p_case)
+      p_string = $uppercase(p_string)
+      p_search = $uppercase(p_search)
+   endif 
+
+   ; init 
+   p_found = 0
+   v_length = $length(p_search)
+
+   ; the actual checking 
+   while (p_string != "")
+      v_pointer = $scan(p_string, p_search)
+      if (v_pointer &gt; 0)
+         p_found +=1
+         p_string = p_string[v_pointer + v_length + 1]
+      else 
+         p_string = ""
+      endif 
+   endwhile 
+   return(0)
+end ; IP_COUNT_STRING
+
+entry IP_STRING_LOCATIONS
+   ; @name = IP_STRING_LOCATIONS
+   ; @description = Return a list of starting points in the string where a corresponding string is found.
+   ; @params = p_string can be any string. p_case can be either true (case sensitive) or false (case insensitive). p_list contains the starting locations of the string.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   params
+      string  p_string      : in 
+      string  p_search      : in
+      boolean p_bncase      : in ; yes is case sensitive; no is case insensitive 
+      boolean p_bninliteral : in ; yes also look in literal string; false - donot look into literal string 
+      string  p_list        : out ; a list with numbers with the found strings
+   endparams
+   variables 
+      numeric v_pointer, v_length, v_counter, v_next_pointer
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_STRING_LOCATIONS - Empty string."
+      return(0)
+   endif 
+   if (p_search = "")
+;      message/nobeep "IP_STRING_LOCATIONS - Empty case."
+      return(0)
+   endif
+   ; when we split the string into literals and none literals there is not supposed to be a gold+; in it 
+   ; just to be clear when the boolean is false 
+   if (!p_bninliteral &amp; $scan(p_string, "&uSEP;") &gt; 0)
+      debug
+      message/nobeep "IP_STRING_LOCATIONS - String contains gold+;."
+;      return(0)
+   endif 
+
+   ; 2014-03-03 there is an issue with lists in lists. So we replace the gold+! by a single !
+   p_string = $replace(p_string, 1, "&uNOT;", "!", -1)
+
+   ; not case sensitive  
+   if (!p_bncase)
+      p_string = $uppercase(p_string)
+      p_search = $uppercase(p_search)
+   endif 
+
+   ; init 
+   v_counter = 0
+   v_length  = $length(p_search)
+
+   ; locate the literals
+   ; if we donot want to look in the literal string we need to identify them
+   if (!p_bninliteral)
+      call IP_SLICE_LITERALS(p_string, p_string)
+      #include MATERIAL:ERR_CALL
+   endif 
+
+   ; the actual checking 
+   forlist v_item in p_string
+
+      ; save the next pointer, we need it after processing this substring 
+      ; and add 1 for the eol character or the gold+;
+      ; and 1 just to be sure
+      v_next_pointer += $length(v_item) + 1
+      ; process the substring 
+      while (v_item != "")
+         v_pointer = $scan(v_item, p_search)
+         if (v_pointer &gt; 0)
+            v_item = v_item[v_pointer + v_length]
+            v_counter += v_pointer
+            putitem p_list, -1, v_counter
+            v_counter += v_length -1
+;            v_counter += v_length
+         else 
+;            v_pointer += $length(v_item)
+            v_counter += $length(v_item)
+            v_item = ""
+         endif 
+      endwhile 
+      ; reset the pointer
+;      v_pointer = v_next_pointer
+      v_counter = v_next_pointer
+   endfor
+
+   ; check the found values 
+   forlist v_item in p_list 
+      if ($uppercase(p_string[v_item, v_item + v_length -1]) != $uppercase(p_search))
+         debug
+         break
+      endif 
+   endfor
+
+   return(0)
+end ; IP_STRING_LOCATIONS
+
+entry IP_STRING_LIST
+   ; @name = IP_STRING_LIST
+   ; @description = Return a list of string values that represent the values given in the corresponding string value.
+   ; @params = p_string can be any string. p_case can be either true (case sensitive) or false (case insensitive). p_list contains the starting locations of the string.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   params 
+      string  p_string : in 
+      string  p_search : in
+      boolean p_case   : in
+      string  p_list   : out
+   endparams 
+   variables 
+      string v_item, v_list
+      numeric v_length, v_pointer
+   endvariables 
+
+   ; init 
+   v_length = $length(p_search)
+
+   ; get a list of starting points in the codestring  
+   call IP_STRING_LOCATIONS(p_string, p_search, p_case, 1, v_list)
+   #include MATERIAL:ERR_CALL
+
+   forlist v_pointer in v_list
+      v_item = p_string[v_pointer, v_length + v_pointer - 1]
+      putitem p_list, -1, v_item      
+   endfor
+   return(0)
+end ; IP_STRING_LIST</DAT>
+</OCC>
+</TABLE>
+<TABLE>
+<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
+ rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
+<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
+<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
+<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
+<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
+<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
+<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
+<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
+</DSC>
+<OCC>
+<DAT name="UTIMESTAMP">2014-05-23T13:40:03.00</DAT>
+<DAT name="USUB">I</DAT>
+<DAT name="UVAR">MATERIAL</DAT>
+<DAT name="ULABEL">IP_STRING</DAT>
+<DAT name="ULAN">P</DAT>
+<DAT name="UDESCR" xml:space='preserve'>String functions</DAT>
+<DAT name="UTEXT" xml:space='preserve'>entry IP_REPLACE_ALL
+   ; @name = IP_REPLACE_ALL
+   ; @description = replace all the values in a string in a while loop until there are none left
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   
+   params
+      string p_string  : inout 
+      string p_search  : in
+      string p_replace : in 
+   endparams 
+
+   while ($scan(p_string, p_search) &gt; 0)
+      p_string = $replace(p_string, 1, p_search, p_replace, -1)
+   endwhile 
+
+   return(0)
+end
+
+entry IP_CUT_STRING
+   ; @name = IP_CUT_STRING
+   ; @description = Cut a string into two pieces. One being the part between the search start and search end value. The other the remaining string concatenated. 
+   ; @version = 0.1
+   ; @author = Dennis E.J. Vorst
+   params 
+      string p_string_in    : in
+      string p_search_start : in
+      string p_search_end   : in
+      string p_eol_char     : in
+      string p_string_out   : out
+      string p_cut_string   : out
+   endparams 
+   variables 
+      numeric v_position, v_length
+      string v_string_in
+   endvariables 
+
+   ; init 
+   v_position  = $scan(p_string_in, p_search_start)
+   v_length    = $length(p_search_end)
+   v_string_in = p_string_in
+
+   if (v_position &gt; 0)
+      ; add the previous part of the trigger to a string for further processing 
+      p_string_out = $concat(p_string_out, p_string_in[1, v_position - 1])
+      ; cut the rest of the trigger from the starting point of the found stuff
+      p_string_in = p_string_in[v_position]
+
+      ; get the end part 
+      v_position = $scan(p_string_in, p_search_end)
+      ; if not found then put the rest in 
+      if (v_position = 0)
+         ; end string not found. Return the entire string 
+         p_string_out = v_string_in
+         p_cut_string = ""
+      else 
+         p_cut_string = p_string_in[1, v_position + v_length - 1]
+         p_string_out = $concat(p_string_out, p_eol_char, p_string_in[v_position + v_length])
+      endif
+   else 
+      ; searchstring is not found 
+      p_string_out = p_string_in
+      p_cut_string = ""
+
+   endif
+
+   return(0)
+end ; IP_CUT_STRING
+
+entry IP_CHE_CASE
+   ; @name = IP_CHE_CASE
+   ; @description = Check the case of the given string. 
+   ; @params = p_string can be any string. p_case can be either UPPER, LOWER or CAMEL. p_found returns true if the string complies with the p_case entered.
+   ; @deprecated 
+   ; @additiobal = this function is deprecated. Please use the function in the service S_MIS_OBJECt
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string  p_string  : in 
+      string  p_case    : in
+      boolean p_isfound : out
+   endparams
+
+   ; prerequisites
+   if (p_string = "")
+;      message/nobeep "IP_CHE_CASE - Empty string."
+      p_isfound = 1
+      return(0)
+   endif 
+   if (p_case = "")
+      ; if the case is empty we automatically comply
+;      message/nobeep "IP_CHE_CASE - Empty case."
+      p_isfound = 1
+      return(0)
+   endif 
+
+   ; init 
+   p_isfound = 0
+
+   ; the actual checking 
+   selectcase p_case 
+      case "CAMEL"
+         ; camelcase happens when the string is neither uppercase nor lowercase 
+         ; example of camelcase: CamelCase
+         if (p_string != $lowercase(p_string) &amp; p_string != $uppercase(p_string))
+            p_isfound = 1
+         endif 
+      case "LOWER"
+         if (p_string = $lowercase(p_string))
+            p_isfound = 1
+         endif 
+      case "UPPER"
+         if (p_string = $uppercase(p_string))
+            p_isfound = 1
+         endif 
+      elsecase 
+         debug
+         message/nobeep $concat("IP_CHE_CASE - Unknown case ", p_case)
+         return(0)
+   endselectcase 
+   return(0)
+end ; IP_CHE_CASE
+
+entry IP_LISTTOSTRING
+   ; @name = IP_LISTTOSTRING
+   ; @description = Create a string from the list
+   ; @params = p_list can be a list. It cannot be a key-valuepair list or a list within a list. p_case can be any string. p_found returns the string with the items as orderd in the list, separated by a value of the separation string. 
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string p_list      : in 
+      string p_separator : in
+      string p_string    : out
+   endparams
+   variables
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_list = "")
+;      message/nobeep "IP_LISTTOSTRING - Empty string."
+      return(0)
+   endif 
+   if ($scan(p_list, "=") &gt; 0)
+      message/nobeep "IP_LISTTOSTRING - List entered contains key-valuepairs."
+      return(0)      
+   endif 
+   if ($scan(p_list, "&uNOT;&uSEP;") &gt; 0)
+      message/nobeep "IP_LISTTOSTRING - List entered contains lists within lists."
+      return(0)      
+   endif 
+
+   ; the actual processing
+   forlist v_item in p_list
+      p_string = $concat(p_string, v_item, p_separator)
+   endfor
+
+   ; cut the separator from the end of the string 
+   p_string = $rtrim(p_string, p_separator)
+
+   return(0)
+end ; IP_LISTTOSTRING
+
+entry IP_STRINGTOLIST
+   ; @name = IP_STRINGTOLIST
+   ; @description = Create a list from a string
+   ; @params = p_string can be a string. p_list returns a list of the string separated at the places where the separator was found.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string p_string    : in 
+      string p_separator : in
+      string p_list      : out
+   endparams
+   variables
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_STRINGTOLIST - Empty string."
+      return(0)
+   endif 
+   if ($scan(p_string, "&uSEP;") &gt; 0)
+      message/nobeep "IP_STRINGTOLIST - String entered is already a list."
+      return(0)      
+   endif 
+   if (p_separator = "")
+      message/nobeep "IP_STRINGTOLIST - Separator cannot be empty."
+      return(0)      
+   endif 
+   if ($scan(p_separator, "&uSEP;") &gt; 0)
+      message/nobeep "IP_STRINGTOLIST - Separator cannot be &lt;gold&gt; + &lt;semicolon&gt;."
+      return(0)      
+   endif 
+
+   ; the actual processing
+   p_list = $replace(p_string, 1, p_separator, "&uSEP;", -1)
+
+   return(0)
+end ; IP_STRINGTOLIST
+
+entry IP_COUNT_STRING
+   ; @name = IP_COUNT_STRING
+   ; @description = Count the number of times a string is found in another string.
+   ; @params = p_string can be any string. p_case can be either UPPER, LOWER or CAMEL. p_found returns true if the string complies with the p_case entered.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   ; 
+   params
+      string  p_string : in 
+      string  p_search : in
+      boolean p_case   : in
+      numeric p_found  : out
+   endparams
+   variables 
+      numeric v_pointer, v_length
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_COUNT_STRING - Empty string."
+      return(0)
+   endif 
+   if (p_search = "")
+;      message/nobeep "IP_COUNT_STRING - Empty case."
+      return(0)
+   endif
+   ; not case sensitive  
+   if (!p_case)
+      p_string = $uppercase(p_string)
+      p_search = $uppercase(p_search)
+   endif 
+
+   ; init 
+   p_found = 0
+   v_length = $length(p_search)
+
+   ; the actual checking 
+   while (p_string != "")
+      v_pointer = $scan(p_string, p_search)
+      if (v_pointer &gt; 0)
+         p_found +=1
+         p_string = p_string[v_pointer + v_length + 1]
+      else 
+         p_string = ""
+      endif 
+   endwhile 
+   return(0)
+end ; IP_COUNT_STRING
+
+entry IP_STRING_LOCATIONS
+   ; @name = IP_STRING_LOCATIONS
+   ; @description = Return a list of starting points in the string where a corresponding string is found.
+   ; @params = p_string can be any string. p_case can be either true (case sensitive) or false (case insensitive). p_list contains the starting locations of the string.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   params
+      string  p_string      : in 
+      string  p_search      : in
+      boolean p_bncase      : in ; yes is case sensitive; no is case insensitive 
+      boolean p_bninliteral : in ; yes also look in literal string; false - donot look into literal string 
+      string  p_list        : out ; a list with numbers with the found strings
+   endparams
+   variables 
+      numeric v_pointer, v_length, v_counter, v_next_pointer
+      string v_item
+   endvariables 
+
+   ; prerequisites 
+   if (p_string = "")
+;      message/nobeep "IP_STRING_LOCATIONS - Empty string."
+      return(0)
+   endif 
+   if (p_search = "")
+;      message/nobeep "IP_STRING_LOCATIONS - Empty case."
+      return(0)
+   endif
+   ; when we split the string into literals and none literals there is not supposed to be a gold+; in it 
+   ; just to be clear when the boolean is false 
+   if (!p_bninliteral &amp; $scan(p_string, "&uSEP;") &gt; 0)
+      debug
+      message/nobeep "IP_STRING_LOCATIONS - String contains gold+;."
+;      return(0)
+   endif 
+
+   ; 2014-03-03 there is an issue with lists in lists. So we replace the gold+! by a single !
+   p_string = $replace(p_string, 1, "&uNOT;", "!", -1)
+
+   ; not case sensitive  
+   if (!p_bncase)
+      p_string = $uppercase(p_string)
+      p_search = $uppercase(p_search)
+   endif 
+
+   ; init 
+   v_counter = 0
+   v_length  = $length(p_search)
+
+   ; locate the literals
+   ; if we donot want to look in the literal string we need to identify them
+   if (!p_bninliteral)
+      call IP_SLICE_LITERALS(p_string, p_string)
+      #include MATERIAL:ERR_CALL
+   endif 
+
+   ; the actual checking 
+   forlist v_item in p_string
+
+      ; save the next pointer, we need it after processing this substring 
+      ; and add 1 for the eol character or the gold+;
+      ; and 1 just to be sure
+      v_next_pointer += $length(v_item) + 1
+      ; process the substring 
+      while (v_item != "")
+         v_pointer = $scan(v_item, p_search)
+         if (v_pointer &gt; 0)
+            v_item = v_item[v_pointer + v_length]
+            v_counter += v_pointer
+            putitem p_list, -1, v_counter
+            v_counter += v_length -1
+;            v_counter += v_length
+         else 
+;            v_pointer += $length(v_item)
+            v_counter += $length(v_item)
+            v_item = ""
+         endif 
+      endwhile 
+      ; reset the pointer
+;      v_pointer = v_next_pointer
+      v_counter = v_next_pointer
+   endfor
+
+   ; check the found values 
+   forlist v_item in p_list 
+      if ($uppercase(p_string[v_item, v_item + v_length -1]) != $uppercase(p_search))
+         debug
+         break
+      endif 
+   endfor
+
+   return(0)
+end ; IP_STRING_LOCATIONS
+
+entry IP_STRING_LIST
+   ; @name = IP_STRING_LIST
+   ; @description = Return a list of string values that represent the values given in the corresponding string value.
+   ; @params = p_string can be any string. p_case can be either true (case sensitive) or false (case insensitive). p_list contains the starting locations of the string.
+   ; @version = 0.1
+   ; @date = 2014-01-08
+   ; @author = Dennis E.J. Vorst
+   params 
+      string  p_string : in 
+      string  p_search : in
+      boolean p_case   : in
+      string  p_list   : out
+   endparams 
+   variables 
+      string v_item, v_list
+      numeric v_length, v_pointer
+   endvariables 
+
+   ; init 
+   v_length = $length(p_search)
+
+   ; get a list of starting points in the codestring  
+   call IP_STRING_LOCATIONS(p_string, p_search, p_case, 1, v_list)
+   #include MATERIAL:ERR_CALL
+
+   forlist v_pointer in v_list
+      v_item = p_string[v_pointer, v_length + v_pointer - 1]
+      putitem p_list, -1, v_item      
+   endfor
+   return(0)
+end ; IP_STRING_LIST
+
+entry IP_ASCII2CHAR
+   ; @description = convert a numeric value to its char equivalent
+   ; @author = Dennis E.J. Vorst 
+   params 
+      numeric p_value : in 
+      string  p_char  : out
+   endparams
+
+   selectcase p_value
+      case 65
+         p_char = "A"
+      case 66
+         p_char = "B"
+      case 67
+         p_char = "C"
+      case 68
+         p_char = "D"
+      case 69
+         p_char = "E"
+      case 70
+         p_char = "F"
+      case 71
+         p_char = "G"
+      case 72
+         p_char = "H"
+      case 73
+         p_char = "I"
+      case 74
+         p_char = "J"
+      case 75
+         p_char = "K"
+      case 76
+         p_char = "L"
+      case 77
+         p_char = "M"
+      case 78
+         p_char = "N"
+      case 79
+         p_char = "O"
+      case 80
+         p_char = "P"
+      case 81
+         p_char = "Q"
+      case 82
+         p_char = "R"
+      case 83
+         p_char = "S"
+      case 84
+         p_char = "T"
+      case 85
+         p_char = "U"
+      case 86
+         p_char = "V"
+      case 87
+         p_char = "W"
+      case 88
+         p_char = "X"
+      case 89
+         p_char = "Y"
+      case 90
+         p_char = "Z"
+      
+   endselectcase
+   return(0)
+end ; IP_ASCII2CHAR</DAT>
+</OCC>
+</TABLE>
+</UNIFACE>
