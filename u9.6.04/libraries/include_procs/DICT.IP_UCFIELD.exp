@@ -13,8 +13,9 @@
  pointer="0" inum="0" ufocc="0" />
 </DSC>
 <OCC>
-<DAT name="ULIBRARY">MATERIAL</DAT>
-<DAT name="UTIMESTAMP">2014-05-23T10:01:12.69</DAT>
+<DAT name="ULIBRARY">DICT</DAT>
+<DAT name="UDESCR" xml:space='preserve'>Dictionary library</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T07:16:32.44</DAT>
 </OCC>
 </TABLE>
 <TABLE>
@@ -66,66 +67,69 @@
  pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
 </DSC>
 <OCC>
-<DAT name="UTIMESTAMP">2014-01-17T09:53:23.22</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T07:24:59.44</DAT>
 <DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_LIST</DAT>
+<DAT name="UVAR">DICT</DAT>
+<DAT name="ULABEL">IP_UCFIELD</DAT>
 <DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>List functions</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_TRIM_LISTITEMS
-   ; @description = remove the trimvalue from the beginning and end of each listitem
+<DAT name="UDESCR" xml:space='preserve'>UCFIELD include proc</DAT>
+<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FIELDNAMES
+   ; @location = move to include proc that contains UCFIELD stuff
    params 
-      string p_list_in   : in
-      string p_trimvalue : in
-      string p_list_out  : out
+      string p_nmmodel  : in
+      string p_nmentity : in
+      string p_list     : out
    endparams 
-   variables 
-      string v_item
-   endvariables 
 
-   forlist v_item in p_list_in
-      v_item = $rtrim(v_item, p_trimvalue)
-      v_item = $ltrim(v_item, p_trimvalue)
+   clear/e "UCFIELD"
+   U_VLAB.UCFIELD = p_nmmodel
+   U_TLAB.UCFIELD = p_nmentity
+   retrieve/e "UCFIELD"
 
-      putitem p_list_out, -1, v_item
+   forentity "UCFIELD"
+      putitem p_list, -1, U_FLAB.UCFIELD
    endfor
    return(0)
-end ; IP_TRIM_LISTITEMS
+end ; IP_GET_FIELDNAMES
 
-entry IP_PURGE_LISTITEMS
-   ; @description = Remove the blank lines from the list 
+entry IP_CRE_UCFIELD
    params 
-      string p_list_in  : in
-      string p_list_out : out
+      numeric p_nrorder       : in
+      string  p_nmmodel       : in
+      string  p_nmentity      : in
+      string  p_nmfield       : in
+      string  p_nmdatatype    : in
+      string  p_nminterface   : in
+      string  p_ftdescription : in
+      string  p_nmwidgettype  : in
+      string  p_nmlabel       : in
    endparams 
-   variables 
-      string v_item
-   endvariables 
 
-   forlist v_item in p_list_in
-      if (v_item != "")
-         putitem p_list_out, -1, v_item
-      endif 
-   endfor 
-   return(0)
-end ; IP_PURGE_LISTITEMS
+   if ($occmod("UCFIELD") &gt; 0)
+      creocc "UCFIELD", -1
+   endif
 
-entry IP_COUNT_VALUES
-   ; @name = IP_COUNT_VALUES
-   ; @description = count the number of values in a list 
-   params 
-      string  p_list  : in
-      numeric p_count : out
-   endparams 
-   variables
-      string v_item
-   endvariables 
+   UTIMESTAMP.UCFIELD = $datim
+   U_FLAB.UCFIELD = p_nmfield
+   U_VLAB.UCFIELD = p_nmmodel
+   U_TLAB.UCFIELD = p_nmentity
+   U_FSEQ.UCFIELD = p_nrorder
+   UDESCR.UCFIELD = p_ftdescription 
+   U_DTYP.UCFIELD = p_nmdatatype ; "S"
+   U_INDB.UCFIELD = "Y"
+   U_INTF.UCFIELD = p_nminterface ; "C40"
+   WIDGETTYPE.UCFIELD = p_nmwidgettype
+   UINHERIT.UCFIELD = "F"
+   U_DESC.UCFIELD = p_nmlabel
+   UISOBJID.UCFIELD = "F"
+   HTML_FLDPROP.UCFIELD = "SYNC=1"
+   HTML_CTRLTYPE.UCFIELD = "U_INPUT"
+   WEBWIDGETTYPE.UCFIELD = "EDITBOX"
 
-   forlist v_item in p_list
-      p_count += 1
-   endfor 
-   return(0)
-end ; IP_COUNT_VALUES</DAT>
+;   store/e "UCFIELD"
+
+   return (0)
+end ; IP_CRE_UCFIELD</DAT>
 </OCC>
 </TABLE>
 </UNIFACE>

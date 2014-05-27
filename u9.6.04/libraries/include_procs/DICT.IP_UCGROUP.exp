@@ -1,0 +1,183 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Created by UNIFACE - (C) Compuware Corporation -->
+<!DOCTYPE UNIFACE PUBLIC "UNIFACE.DTD" "UNIFACE.DTD">
+<UNIFACE release="9.6" xmlengine="2.0">
+<TABLE>
+<DSC name="ULIBR" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
+ rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="0" charset=".U">
+<FLD name="ULIBRARY" seqno="1" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="101" />
+<FLD name="UDESCR" seqno="2" type="S" level="2" pack="0" scale="0" length="25"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UTIMESTAMP" seqno="3" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+</DSC>
+<OCC>
+<DAT name="ULIBRARY">DICT</DAT>
+<DAT name="UDESCR" xml:space='preserve'>Dictionary library</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T07:16:32.44</DAT>
+</OCC>
+</TABLE>
+<TABLE>
+<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
+ rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
+<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
+<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
+<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
+<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
+<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
+ pointer="0" inum="0" ufocc="0" />
+<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
+<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
+<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
+ pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
+</DSC>
+<OCC>
+<DAT name="UTIMESTAMP">2014-05-27T12:28:04.88</DAT>
+<DAT name="USUB">I</DAT>
+<DAT name="UVAR">DICT</DAT>
+<DAT name="ULABEL">IP_UCGROUP</DAT>
+<DAT name="ULAN">P</DAT>
+<DAT name="UDESCR" xml:space='preserve'>UCGROUP include proc</DAT>
+<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_TABLENAMES
+   ; @location = move to include proc that contains UCGROUP stuff
+   params 
+      string p_nmmodel : in 
+      string p_list    : out
+   endparams
+
+   clear/e "UCGROUP"
+   U_VLAB.UCGROUP/init = p_nmmodel
+   retrieve/e "UCGROUP"
+
+   forentity "UCGROUP"
+      putitem/id p_list, U_GLAB.UCGROUP, U_GLAB.UCGROUP
+   endfor
+
+   return(0)
+end ; IP_GET_TABLENAMES
+
+entry IP_CRE_UCGROUP
+   params
+      string p_nmmodel       : in
+      string p_nmentity      : in
+      string p_ftdescription : in
+   endparams
+   variables 
+      string v_trigger
+   endvariables 
+
+   if ($occmod("UCGROUP") &gt; 0)
+      creocc "UCGROUP", -1
+   endif
+
+   UTIMESTAMP.UCGROUP = $datim
+   U_GLAB.UCGROUP = p_nmentity
+   U_VLAB.UCGROUP = p_nmmodel
+   U_TLAB.UCGROUP = p_nmentity
+   UDESCR.UCGROUP = p_ftdescription
+   U_BORD.UCGROUP = "N"
+   U_INDB.UCGROUP = "Y"
+   U_DBMS.UCGROUP = "DEF"
+   U_UPD.UCGROUP  = "Y"
+   U_INTF.UCGROUP = "C*"
+   P_READ.UCGROUP = "read"
+   P_WRIT.UCGROUP = "write"
+   P_DEL.UCGROUP  = "delete"
+   P_LOCK.UCGROUP = "lock%%^if ($status = -10) reload"
+
+   ; findoccurence
+   v_trigger = "retrieve/o%%^"
+   v_trigger = "%%v_trigger%%%if ($status &lt; 0)%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -15) message $text(2202) ; multiple hits: in foreign entity%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -14) message $text(2205) ; multiple hits: not in foreign entity%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -11) message $text(2009) ; occurrence currently locked%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -7)  message $text(2006) ; duplicate key%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -4)  message $text(2003) ; cannot open table or file%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -3)  message $text(2002) ; exceptional I/O error%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = -2)  message $text(2200) ; key not found:in foreign entity%%^"
+   v_trigger = "%%v_trigger%%%else%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = 1)   message $text(2201) ; key not found: foreign entity w/WRITE UP%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = 2)                       ; one occurrence found in foreign entity%%^"
+   v_trigger = "%%v_trigger%%%    retrieve/e%%^"
+   v_trigger = "%%v_trigger%%%    if ($status &lt; 0) message $text(2002) ; I/O error detected%%^"
+   v_trigger = "%%v_trigger%%%  endif%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = 3)   message $text(2203) ; occurrence un-removed%%^"
+   v_trigger = "%%v_trigger%%%  if ($status = 4)   message $text(2204) ; key found: occurrence repositioned%%^"
+   v_trigger = "%%v_trigger%%%endif%%^"
+   v_trigger = "%%v_trigger%%%%%^"
+   v_trigger = "%%v_trigger%%%return ($status)"
+   P_FNDOCC.UCGROUP = v_trigger
+
+   ; validate key
+   v_trigger = "findkey $entname, $curkey%%^"
+   v_trigger = "%%v_trigger%%%selectcase $status%%^"
+   v_trigger = "%%v_trigger%%%%%^"
+   v_trigger = "%%v_trigger%%%  case 0             ; key not found%%^"
+   v_trigger = "%%v_trigger%%%    if ($foreign)    ; non existing key in up entity%%^"
+   v_trigger = "%%v_trigger%%%      return (-1)    ; only if Write Up trigger not filled%%^"
+   v_trigger = "%%v_trigger%%%    endif%%^"
+   v_trigger = "%%v_trigger%%%  case 1             ; key found in Component%%^"
+   v_trigger = "%%v_trigger%%%    if (!$foreign)   ; duplicate key in down entity%%^"
+   v_trigger = "%%v_trigger%%%      return (-1)%%^"
+   v_trigger = "%%v_trigger%%%    endif%%^"
+   v_trigger = "%%v_trigger%%%  case 2             ; key found in DBMS%%^"
+   v_trigger = "%%v_trigger%%%    if (!$foreign)   ; duplicate key in down entity%%^"
+   v_trigger = "%%v_trigger%%%      return (-1)%%^"
+   v_trigger = "%%v_trigger%%%    endif%%^"
+   v_trigger = "%%v_trigger%%%endselectcase%%^"
+   v_trigger = "%%v_trigger%%%%%^"
+   v_trigger = "%%v_trigger%%%return (0)%%^"
+   VLDK.UCGROUP = v_trigger
+
+   UISBCLASS.UCGROUP      = "T"
+   UISASSOC.UCGROUP       = "F"
+   U_SVCUSE.UCGROUP       = "N"
+   HTML_ENTPROP.UCGROUP   = "U_ATLEASTONE=1&uSEP;U_STARTOCC=1&uSEP;U_MAXOCC="
+   UABBR.UCGROUP          = p_nmentity
+   UEOINTERFACE.UCGROUP   = "%%p_nmentity%%%OCC"
+   UECINTERFACE.UCGROUP   = "%%p_nmentity%%%COLL"
+   UWIDGETTYPE.UCGROUP    = "U_NONE"
+   UWEBWIDGETTYPE.UCGROUP = "U_NONE"
+
+;   store/e "UCGROUP"
+
+   return(0)
+end ; IP_CRE_UCGROUP</DAT>
+</OCC>
+</TABLE>
+</UNIFACE>

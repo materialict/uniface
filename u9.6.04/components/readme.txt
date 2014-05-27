@@ -3,6 +3,7 @@ Components
 c_mis_barcode	- Validate a barcode
 c_mis_checkcase	- Example form that allows you to check the text for uppercase, lowercase and camelcase
 c_mis_countstr	- Component that counts the number of times a certain string is found in another string
+c_mis_excel.exp	- form that creates an Excel application and modifies an excelsheet
 C_MIS_EXPORT	- Form that reads the UFORM, ULIBR, UCSCH, UGFIF, UGFSYN and UGFLAY tables and creates files with an EXP extention in specific folders. Component is used to create empty export files from Uniface objects so that they can be exported using the scripts in the batch/uniface repository
 c_mis_hyperlink	- Component with two examples of an hyperlink. One using a browser to a website. The other using the mailto command
 c_mis_listtostr	- Component that converts a list into a string using a chosen separator

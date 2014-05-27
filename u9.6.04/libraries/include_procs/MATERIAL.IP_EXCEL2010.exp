@@ -3,114 +3,18 @@
 <!DOCTYPE UNIFACE PUBLIC "UNIFACE.DTD" "UNIFACE.DTD">
 <UNIFACE release="9.6" xmlengine="2.0">
 <TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
+<DSC name="ULIBR" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
+ rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="0" charset=".U">
+<FLD name="ULIBRARY" seqno="1" type="S" level="2" pack="0" scale="0" length="16"
+ pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="101" />
+<FLD name="UDESCR" seqno="2" type="S" level="2" pack="0" scale="0" length="25"
  pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
+<FLD name="UTIMESTAMP" seqno="3" type="E" level="2" pack="0" scale="0" length="15"
  pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
 </DSC>
 <OCC>
-<DAT name="UTIMESTAMP">2014-01-17T09:53:23.22</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_LIST</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>List functions</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_TRIM_LISTITEMS
-   ; @description = remove the trimvalue from the beginning and end of each listitem
-   params 
-      string p_list_in   : in
-      string p_trimvalue : in
-      string p_list_out  : out
-   endparams 
-   variables 
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list_in
-      v_item = $rtrim(v_item, p_trimvalue)
-      v_item = $ltrim(v_item, p_trimvalue)
-
-      putitem p_list_out, -1, v_item
-   endfor
-   return(0)
-end ; IP_TRIM_LISTITEMS
-
-entry IP_PURGE_LISTITEMS
-   ; @description = Remove the blank lines from the list 
-   params 
-      string p_list_in  : in
-      string p_list_out : out
-   endparams 
-   variables 
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list_in
-      if (v_item != "")
-         putitem p_list_out, -1, v_item
-      endif 
-   endfor 
-   return(0)
-end ; IP_PURGE_LISTITEMS
-
-entry IP_COUNT_VALUES
-   ; @name = IP_COUNT_VALUES
-   ; @description = count the number of values in a list 
-   params 
-      string  p_list  : in
-      numeric p_count : out
-   endparams 
-   variables
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list
-      p_count += 1
-   endfor 
-   return(0)
-end ; IP_COUNT_VALUES</DAT>
+<DAT name="ULIBRARY">MATERIAL</DAT>
+<DAT name="UTIMESTAMP">2014-05-23T10:01:12.69</DAT>
 </OCC>
 </TABLE>
 <TABLE>
@@ -162,219 +66,7 @@ end ; IP_COUNT_VALUES</DAT>
  pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
 </DSC>
 <OCC>
-<DAT name="UTIMESTAMP">2014-01-17T09:53:23.22</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_LIST</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>List functions</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_TRIM_LISTITEMS
-   ; @description = remove the trimvalue from the beginning and end of each listitem
-   params 
-      string p_list_in   : in
-      string p_trimvalue : in
-      string p_list_out  : out
-   endparams 
-   variables 
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list_in
-      v_item = $rtrim(v_item, p_trimvalue)
-      v_item = $ltrim(v_item, p_trimvalue)
-
-      putitem p_list_out, -1, v_item
-   endfor
-   return(0)
-end ; IP_TRIM_LISTITEMS
-
-entry IP_PURGE_LISTITEMS
-   ; @description = Remove the blank lines from the list 
-   params 
-      string p_list_in  : in
-      string p_list_out : out
-   endparams 
-   variables 
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list_in
-      if (v_item != "")
-         putitem p_list_out, -1, v_item
-      endif 
-   endfor 
-   return(0)
-end ; IP_PURGE_LISTITEMS
-
-entry IP_COUNT_VALUES
-   ; @name = IP_COUNT_VALUES
-   ; @description = count the number of values in a list 
-   params 
-      string  p_list  : in
-      numeric p_count : out
-   endparams 
-   variables
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list
-      p_count += 1
-   endfor 
-   return(0)
-end ; IP_COUNT_VALUES</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-23T10:28:10.05</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   variables 
-      handle v_msexcel
-      string v_nmversion
-      numeric v_status 
-   endvariables 
-
-   v_status = 0
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-      v_status = -1
-   endif
-   p_list = v_list
-   return(0)
-end</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-23T10:39:18.56</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T12:17:00.24</DAT>
 <DAT name="USUB">I</DAT>
 <DAT name="UVAR">MATERIAL</DAT>
 <DAT name="ULABEL">IP_EXCEL2010</DAT>
@@ -384,107 +76,8 @@ end</DAT>
    ; @description = return a list of filetypes that are supported by Microfost Excel 
    ; @author = Dennis E.J. Vorst 
    ; @company = Material ICT Solutions
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   variables 
-      handle v_msexcel
-      string v_nmversion
-      numeric v_status 
-   endvariables 
-
-   v_status = 0
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-      v_status = -1
-   endif
-   p_list = v_list
-   return(0)
-end</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-23T11:27:21.77</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
    params 
       string p_list : out
@@ -505,262 +98,8 @@ entry IP_CHE_VERSION
    ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
    ; @author = Dennis E.J. Vorst 
    ; @company = Material ICT Solutions
-   variables 
-      handle v_msexcel
-      string v_nmversion
-      numeric v_status 
-   endvariables 
-
-   v_status = 0
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-      v_status = -1
-   endif
-
-   deleteinstance v_msexcel
-   return(0)
-end
-
-entry IP_SWI_VISIBLE
-   ; @description = Toggle the visibillity of the Excel application 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   params 
-      handle  p_msexcel   : in
-      boolean p_isvisible : in
-   endparams
-   variables 
-      boolean v_isvisible
-   endvariables
-
-   ; get the visibillity 
-   activate p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-
-   ; Toggle the visible
-   if (p_isvisible != v_isvisible)
-      activate p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-   else 
-      message "Excel application is allready set correctly"
-   endif
-   return(0)
-end ; 
-</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-23T11:27:21.77</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   variables 
-      handle v_msexcel
-      string v_nmversion
-      numeric v_status 
-   endvariables 
-
-   v_status = 0
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-      v_status = -1
-   endif
-
-   deleteinstance v_msexcel
-   return(0)
-end
-
-entry IP_SWI_VISIBLE
-   ; @description = Toggle the visibillity of the Excel application 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   params 
-      handle  p_msexcel   : in
-      boolean p_isvisible : in
-   endparams
-   variables 
-      boolean v_isvisible
-   endvariables
-
-   ; get the visibillity 
-   activate p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-
-   ; Toggle the visible
-   if (p_isvisible != v_isvisible)
-      activate p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-   else 
-      message "Excel application is allready set correctly"
-   endif
-   return(0)
-end ; 
-</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-25T14:59:39.73</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    variables 
       handle v_msexcel
       string v_nmversion
@@ -787,6 +126,8 @@ entry IP_SWI_VISIBLE
    ; @description = Toggle the visibillity of the Excel application 
    ; @author = Dennis E.J. Vorst 
    ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    params 
       handle  p_msexcel   : in
       boolean p_isvisible : in
@@ -816,6 +157,10 @@ end ;
 
 entry IP_NEW_MSEXCEL
    ; @description = create a bew instance of the application signature 
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    params
       handle p_msexcel : out
    endparams 
@@ -829,6 +174,10 @@ end ; IP_NEW_APPLICATION
 
 entry IP_DEL_MSEXCEL
    ; @description = create a bew instance of the application signature 
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    params
       handle p_msexcel : inout
    endparams 
@@ -846,6 +195,10 @@ end ; IP_DEL_APPLICATION
 
 entry IP_NEW_WORKBOOKS
    ; @description = create a new workbooks handle
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    params 
       handle p_msexcel   : in
       handle p_workbooks : out
@@ -866,1249 +219,343 @@ end ; IP_NEW_WORKBOOKS
 
 entry IP_DEL_WORKBOOKS
    ; @description = delete a workbooks handle
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
    params 
       handle p_workbooks : in
    endparams 
 
-   if (p_workbooks != "")
-      deleteinstance p_workbooks
+   if (p_workbooks = "")
+      message "Workbooks handle is empty"
+      return(0)
+   endif 
+
+   deleteinstance p_workbooks
+   if ($status &gt;= 0)
+      message "Workbooks succesfully removed"
+   endif
+
+   return(0)
+end ; IP_DEL_WORKBOOKS
+
+entry IP_ADD_WORKBOOK
+   ; @description = Create a new workbook object 
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_workbooks  : in
+      string p_nmtemplate : in
+      handle p_workbook   : out
+   endparams 
+
+   if (p_workbooks = "")
+      message "Workbooks handle is empty"
+      return(0)
+   endif 
+
+   ; if no template is entered make it optional. This is done by parsing a - [minus] character. Donot parse an empty "" string
+   if (p_nmtemplate = "")
+      ; create a new workbook without a template
+      p_workbooks-&gt;ADD(p_workbook, -)
       if ($status &gt;= 0)
-         message "Workbooks succesfully removed"
+         message "Workbook succesfully created"
+      endif 
+   else 
+      ; create a new workbook without a template
+      p_workbooks-&gt;ADD(p_workbook, p_nmtemplate)
+      if ($status &gt;= 0)
+         message "Workbook succesfully created"
+      endif 
+   endif 
+
+   return(0)
+end ; IP_ADD_WORKBOOK
+
+entry IP_OPEN_WORKBOOK
+   ; @description = open an excel workbook
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   ; @issues = because i havenot figured out how to pass the - [default] sign as a parameter without using "" (), this entry only allows for filename and filetype and the rest of the parameters are passed as default.
+   params 
+      handle  p_workbooks : in 
+      string  p_nmfile    : in
+      numeric p_nmtype    : in
+      handle  p_workbook  : out
+   endparams 
+
+   if (p_workbooks = "")
+      message "Handle p_workbooks is empty"
+      return(0)
+   endif 
+
+   if (p_nmfile = "")
+      message "Please provide a valid filename"
+      return(0)
+   endif 
+
+   if (p_nmtype = "")
+      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, -, -, -, -, -, -, -, -, -, -, -, -, -, -)
+      if ($status &gt;=0)
+         message "File %%p_nmfile%%% successfully opened"
+      endif 
+   else 
+      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, p_nmtype, -, -, -, -, -, -, -, -, -, -, -, -, -)
+      if ($status &gt;=0)
+         message "File %%p_nmfile%%% successfully opened"
+      endif 
+   endif
+ 
+   return(0)
+end ; IP_OPEN_DOCUMENT
+
+entry IP_GET_ACTIVESHEET
+   ; @description = create set the activesheet in a workbook
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_workbook    : in
+      handle p_activesheet : out
+   endparams 
+
+   if (p_workbook = "")
+      message "Workbook handle is empty"
+      return(0)
+   endif 
+
+   p_workbook-&gt;GET_ACTIVESHEET(p_activesheet)
+   if ($status &gt;= 0)
+      message "Activesheet succesfully set"
+   endif 
+
+   return(0)
+end ; IP_GET_ACTIVESHEET
+
+entry IP_GET_ACTIVECELL
+   ; @description = set the current active cell, or range of cells in the active worksheet
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activesheet  : in
+      string p_nmrangestart : in
+      string p_nmrangeend   : in
+      handle p_activecell   : out
+   endparams 
+
+   if (p_activesheet = "")
+      message "Activesheet handle is empty"
+      return(0)
+   endif 
+   if (p_nmrangestart = "")
+      message "Start coordinates are empty"
+      return(0)
+   endif 
+
+   if (p_nmrangeend = "")
+      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, -)
+   else 
+      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, p_nmrangeend)
+   endif 
+
+   if ($status &gt;= 0)
+      message "Range succesfully retrieved"
+   endif 
+   return(0)
+end ; IP_GET_ACTIVECELL
+
+entry IP_SET_FORMULAR1C1
+   ; @description = put a formula in the active cell
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activecell : in 
+      string p_value      : in 
+   endparams 
+
+   if (p_activecell = "")
+      message "Activecell handle is empty"
+      return(0)
+   endif 
+
+   p_activecell-&gt;SET_FORMULAR1C1(p_value)
+   if ($status &gt;= 0)
+      message "FORMULAR1C1 set on activecell"
+   endif 
+
+   return(0)
+end ; SET_FORMULAR1C1
+
+entry IP_SET_VALUE
+   ; @description = put a value in the active cell
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activecell : in 
+      string p_value      : in 
+   endparams 
+
+   if (p_activecell = "")
+      message "Activecell handle is empty"
+      return(0)
+   endif 
+
+   p_activecell-&gt;SET_VALUE(-, p_value)
+   if ($status &gt;= 0)
+      message "Value set on activecell"
+   endif 
+
+   return(0)
+
+end ; IP_SET_VALUE
+
+entry IP_GET_VALUE
+   ; @description = retrieve a value from the active cell
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activecell   : in 
+      string p_nmcoordinate : in
+      string p_value        : out
+   endparams 
+
+   if (p_activecell = "")
+      message "Activecell handle is empty"
+      return(0)
+   endif 
+
+   p_activecell-&gt;GET_VALUE(p_value, p_nmcoordinate)
+   if ($status &gt;= 0)
+      message "Value retrieved from activecell"
+   endif 
+
+   return(0)
+
+end ; IP_SET_VALUE
+
+entry IP_SET_TABNAME
+   ; @description = set the name of the tab in the worksheet
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activesheet : in 
+      string p_value       : in
+   endparams 
+
+   if (p_activesheet = "")
+      message "Activesheet handle is empty"
+      return(0)
+   endif 
+   if (p_value = "")
+      message "No value entered"
+      return(0)
+   endif 
+
+   p_activesheet-&gt;SET_NAME(p_value)
+   return(0)
+end ; IP_SET_TABNAME
+
+entry IP_GET_TABNAME
+   ; @description = retrieve the name of the tab in the worksheet
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_activesheet : in 
+      string p_value       : out
+   endparams 
+
+   if (p_activesheet = "")
+      message "Activesheet handle is empty"
+      return(0)
+   endif 
+   if (p_value = "")
+      message "No value entered"
+      return(0)
+   endif 
+
+   p_activesheet-&gt;GET_NAME(p_value)
+   return(0)
+end ; IP_GET_TABNAME
+
+
+entry IP_GET_FILENAME
+   ; @description = retrieve the name of the tab in the worksheet
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   params 
+      handle p_workbook : in 
+      string p_value    : out
+   endparams 
+
+   if (p_workbook = "")
+      message "Workbook handle is empty"
+      return(0)
+   endif 
+
+   p_workbook-&gt;GET_FULLNAME(p_value)
+   return(0)
+end ; IP_GET_FILENAME
+
+entry IP_COLUMN2NUMBER
+   ; @description = turn the alfanumeric column name into a number A=1 and XFD (most right value in Excel 2010) = 
+   ; @author = Dennis E.J. Vorst 
+   ; @company = Material ICT Solutions
+   ; @date = 26-5-2014
+   ; @version 1.0.0
+   ; @prerequisites = #include MATERIAL:IP_STRING
+   params 
+      string  p_nmcolumn : in
+      numeric p_value    : out
+   endparams 
+   variables 
+      numeric v_length, v_value, v_pointer
+      string  v_char 
+   endvariables 
+   
+   ; init 
+   v_length  = $length(p_nmcolumn)
+   v_pointer = 1
+
+   while (v_pointer &lt;= v_length)
+      v_char = p_nmcolumn[v_pointer:1]
+
+      ; translate the char to a number 
+      call IP_ALFABET2NUMBER(v_char, v_value)
+
+      ; calculate 
+      if ((v_length - v_pointer) &gt;= 1)
+         p_value += (v_value * $power(26, v_length - v_pointer))
+      else 
+         p_value += v_value
       endif
-   else 
-      message "Handle p_workbooks is empty"
-   endif 
+
+      ; next 
+      v_pointer += 1
+   endwhile
    return(0)
-end ; IP_DEL_WORKBOOKS
+end ; IP_COLUMN2NUMBER
 
-entry IP_ADD_WORKBOOK
-   params 
-      handle p_workbooks  : in
-      string p_nmtemplate : in
-      handle p_workbook   : out
-   endparams 
-
-   if (p_workbooks = "")
-      message "Handle p_workbooks is empty"
-      return(0)
-   endif 
-
-   ; if no template is entered make it optional. This is done by parsing a - [minus] character. Donot parse an empty "" string
-   if (p_nmtemplate = "")
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, -)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   else 
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, p_nmtemplate)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   endif 
-
-   return(0)
-end ; IP_ADD_WORKBOOK
-
-entry IP_OPEN_WORKBOOK
-   ; @description = open an excel workbook
-   ; @issues = because i havenot figured out hopw to pass the - [default] sign without using "" ().
-   params 
-      handle  p_workbooks : in 
-      string  p_nmfile    : in
-      numeric p_nmtype    : in
-      handle  p_workbook  : in 
-   endparams 
-
-   if (p_workbooks = "")
-      message "Handle p_workbooks is empty"
-      return(0)
-   endif 
-
-   if (p_nmfile = "")
-      message "Please provide a valid filename"
-      return(0)
-   endif 
-
-   if (p_nmfiletype = "")
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, -, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   else 
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, p_nmtype, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   endif
- 
-   return(0)
-end ; IP_OPEN_DOCUMENT</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-25T15:23:37.17</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   variables 
-      handle v_msexcel
-      string v_nmversion
-   endvariables 
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-;   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-   else 
-      message "You are using the correct version of VBA (%%v_nmversion%%%)"
-   endif
-
-   deleteinstance v_msexcel
-   return(0)
-end
-
-entry IP_SWI_VISIBLE
-   ; @description = Toggle the visibillity of the Excel application 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   params 
-      handle  p_msexcel   : in
-      boolean p_isvisible : in
-   endparams
-   variables 
-      boolean v_isvisible
-   endvariables
-
-   ; init 
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before setting the visibillity"
-   endif 
-
-   ; get the visibillity 
-;   activate p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-   p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-
-   ; Toggle the visible
-   if (p_isvisible != v_isvisible)
-;      activate p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-      p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-   else 
-      message "Excel application is allready set correctly"
-   endif
-   return(0)
-end ; 
-
-entry IP_NEW_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   params
-      handle p_msexcel : out
-   endparams 
-
-   newinstance "APPLICATION", p_msexcel
-   if ($status &gt;=0)
-      message "Application succesfully created"
-   endif 
-   return(0)
-end ; IP_NEW_APPLICATION
-
-entry IP_DEL_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   params
-      handle p_msexcel : inout
-   endparams 
-
-   if (p_msexcel != "")
-      deleteinstance p_msexcel
-      if ($status &gt;=0)
-         message "Application succesfully removed"
-      endif 
-   else 
-      message "Handle p_msexcel is empty"
-   endif 
-   return(0)
-end ; IP_DEL_APPLICATION
-
-entry IP_NEW_WORKBOOKS
-   ; @description = create a new workbooks handle
-   params 
-      handle p_msexcel   : in
-      handle p_workbooks : out
-   endparams 
-
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before creating a workbook"
-   else 
-;      activate P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-; according to this thread http://unifaceinfo.com/forum/unifaceintegrations/integrating-msexcel-2010/ using no activate works as well
-      P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-      if ($status &gt;= 0)
-         message "Workbooks succesfully created"
-      endif 
-   endif 
-   return(0)
-end ; IP_NEW_WORKBOOKS 
-
-entry IP_DEL_WORKBOOKS
-   ; @description = delete a workbooks handle
-   params 
-      handle p_workbooks : in
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   deleteinstance p_workbooks
-   if ($status &gt;= 0)
-      message "Workbooks succesfully removed"
-   endif
-
-   return(0)
-end ; IP_DEL_WORKBOOKS
-
-entry IP_ADD_WORKBOOK
-   params 
-      handle p_workbooks  : in
-      string p_nmtemplate : in
-      handle p_workbook   : out
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   ; if no template is entered make it optional. This is done by parsing a - [minus] character. Donot parse an empty "" string
-   if (p_nmtemplate = "")
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, -)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   else 
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, p_nmtemplate)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   endif 
-
-   return(0)
-end ; IP_ADD_WORKBOOK
-
-entry IP_OPEN_WORKBOOK
-   ; @description = open an excel workbook
-   ; @issues = because i havenot figured out hopw to pass the - [default] sign without using "" ().
-   params 
-      handle  p_workbooks : in 
-      string  p_nmfile    : in
-      numeric p_nmtype    : in
-      handle  p_workbook  : in 
-   endparams 
-
-   if (p_workbooks = "")
-      message "Handle p_workbooks is empty"
-      return(0)
-   endif 
-
-   if (p_nmfile = "")
-      message "Please provide a valid filename"
-      return(0)
-   endif 
-
-   if (p_nmfiletype = "")
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, -, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   else 
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, p_nmtype, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   endif
- 
-   return(0)
-end ; IP_OPEN_DOCUMENT
-
-entry IP_GET_ACTIVESHEET
-   params 
-      handle p_workbook    : in
-      handle p_activesheet : out
-   endparams 
-
-   if (p_workbook = "")
-      message "Workbook handle is empty"
-      return(0)
-   endif 
-
-   p_workbook-&gt;GET_ACTIVESHEET(p_activesheet)
-   if ($status &gt;= 0)
-      message "Activesheet succesfully set"
-   endif 
-
-   return(0)
-end ; IP_GET_ACTIVESHEET
-
-entry IP_GET_ACTIVECELL
-   params 
-      handle p_activesheet  : in
-      string p_nmrangestart : in
-      string p_nmrangeend   : in
-      handle p_activecell   : out
-   endparams 
-
-   if (p_activesheet = "")
-      message "Activesheet handle is empty"
-      return(0)
-   endif 
-   if (p_nmrangestart = "")
-      message "Start coordinates are empty"
-      return(0)
-   endif 
-
-   if (p_nmrangeend = "")
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, -)
-   else 
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, p_nmrangeend)
-   endif 
-
-   if ($status &gt;= 0)
-      message "Range succesfully retrieved"
-   endif 
-   return(0)
-end ; IP_GET_ACTIVECELL
-
-entry IP_SET_FORMULAR1C1
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_FORMULAR1C1(p_value)
-   if ($status &gt;= 0)
-      message "FORMULAR1C1 set on activecell"
-   endif 
-
-   return(0)
-entry ; SET_FORMULAR1C1
-
-entry IP_SET_VALUE
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_VALUE(-, p_value)
-   if ($status &gt;= 0)
-      message "Value set on activecell"
-   endif 
-
-   return(0)
-
-end ; IP_SET_VALUE</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-26T08:22:51.15</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   variables 
-      handle v_msexcel
-      string v_nmversion
-   endvariables 
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-;   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-   else 
-      message "You are using the correct version of VBA (%%v_nmversion%%%)"
-   endif
-
-   deleteinstance v_msexcel
-   return(0)
-end
-
-entry IP_SWI_VISIBLE
-   ; @description = Toggle the visibillity of the Excel application 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle  p_msexcel   : in
-      boolean p_isvisible : in
-   endparams
-   variables 
-      boolean v_isvisible
-   endvariables
-
-   ; init 
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before setting the visibillity"
-   endif 
-
-   ; get the visibillity 
-;   activate p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-   p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-
-   ; Toggle the visible
-   if (p_isvisible != v_isvisible)
-;      activate p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-      p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-   else 
-      message "Excel application is allready set correctly"
-   endif
-   return(0)
-end ; 
-
-entry IP_NEW_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params
-      handle p_msexcel : out
-   endparams 
-
-   newinstance "APPLICATION", p_msexcel
-   if ($status &gt;=0)
-      message "Application succesfully created"
-   endif 
-   return(0)
-end ; IP_NEW_APPLICATION
-
-entry IP_DEL_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params
-      handle p_msexcel : inout
-   endparams 
-
-   if (p_msexcel != "")
-      deleteinstance p_msexcel
-      if ($status &gt;=0)
-         message "Application succesfully removed"
-      endif 
-   else 
-      message "Handle p_msexcel is empty"
-   endif 
-   return(0)
-end ; IP_DEL_APPLICATION
-
-entry IP_NEW_WORKBOOKS
-   ; @description = create a new workbooks handle
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_msexcel   : in
-      handle p_workbooks : out
-   endparams 
-
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before creating a workbook"
-   else 
-;      activate P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-; according to this thread http://unifaceinfo.com/forum/unifaceintegrations/integrating-msexcel-2010/ using no activate works as well
-      P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-      if ($status &gt;= 0)
-         message "Workbooks succesfully created"
-      endif 
-   endif 
-   return(0)
-end ; IP_NEW_WORKBOOKS 
-
-entry IP_DEL_WORKBOOKS
-   ; @description = delete a workbooks handle
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbooks : in
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   deleteinstance p_workbooks
-   if ($status &gt;= 0)
-      message "Workbooks succesfully removed"
-   endif
-
-   return(0)
-end ; IP_DEL_WORKBOOKS
-
-entry IP_ADD_WORKBOOK
-   ; @description = Create a new workbook object 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbooks  : in
-      string p_nmtemplate : in
-      handle p_workbook   : out
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   ; if no template is entered make it optional. This is done by parsing a - [minus] character. Donot parse an empty "" string
-   if (p_nmtemplate = "")
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, -)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   else 
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, p_nmtemplate)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   endif 
-
-   return(0)
-end ; IP_ADD_WORKBOOK
-
-entry IP_OPEN_WORKBOOK
-   ; @description = open an excel workbook
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   ; @issues = because i havenot figured out how to pass the - [default] sign as a parameter without using "" (), this entry only allows for filename and filetype and the rest of the parameters are passed as default.
-   params 
-      handle  p_workbooks : in 
-      string  p_nmfile    : in
-      numeric p_nmtype    : in
-      handle  p_workbook  : in 
-   endparams 
-
-   if (p_workbooks = "")
-      message "Handle p_workbooks is empty"
-      return(0)
-   endif 
-
-   if (p_nmfile = "")
-      message "Please provide a valid filename"
-      return(0)
-   endif 
-
-   if (p_nmtype = "")
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, -, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   else 
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, p_nmtype, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   endif
- 
-   return(0)
-end ; IP_OPEN_DOCUMENT
-
-entry IP_GET_ACTIVESHEET
-   ; @description = create set the activesheet in a workbook
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbook    : in
-      handle p_activesheet : out
-   endparams 
-
-   if (p_workbook = "")
-      message "Workbook handle is empty"
-      return(0)
-   endif 
-
-   p_workbook-&gt;GET_ACTIVESHEET(p_activesheet)
-   if ($status &gt;= 0)
-      message "Activesheet succesfully set"
-   endif 
-
-   return(0)
-end ; IP_GET_ACTIVESHEET
-
-entry IP_GET_ACTIVECELL
-   ; @description = set the current active cell, or range of cells in the active worksheet
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activesheet  : in
-      string p_nmrangestart : in
-      string p_nmrangeend   : in
-      handle p_activecell   : out
-   endparams 
-
-   if (p_activesheet = "")
-      message "Activesheet handle is empty"
-      return(0)
-   endif 
-   if (p_nmrangestart = "")
-      message "Start coordinates are empty"
-      return(0)
-   endif 
-
-   if (p_nmrangeend = "")
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, -)
-   else 
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, p_nmrangeend)
-   endif 
-
-   if ($status &gt;= 0)
-      message "Range succesfully retrieved"
-   endif 
-   return(0)
-end ; IP_GET_ACTIVECELL
-
-entry IP_SET_FORMULAR1C1
-   ; @description = put a formula in the active cell
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_FORMULAR1C1(p_value)
-   if ($status &gt;= 0)
-      message "FORMULAR1C1 set on activecell"
-   endif 
-
-   return(0)
-end ; SET_FORMULAR1C1
-
-entry IP_SET_VALUE
-   ; @description = put a value in the active cell
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_VALUE(-, p_value)
-   if ($status &gt;= 0)
-      message "Value set on activecell"
-   endif 
-
-   return(0)
-
-end ; IP_SET_VALUE</DAT>
-</OCC>
-</TABLE>
-<TABLE>
-<DSC name="USOURCE" model="DICT" system="S" pseudo ="73" level="1" noupdate="0"
- rbk="0" ffsql="0" transnr="0" segsize="0" ufocc="500" charset=".U">
-<FLD name="UTIMESTAMP" seqno="1" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMPSTAMP" seqno="2" type="E" level="2" pack="0" scale="0" length="15"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USTAT" seqno="3" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="USUB" seqno="4" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="101,1" />
-<FLD name="UVAR" seqno="5" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="2" ufocc="0" mandatory="yes" idxnum="1,2" idxsnr="102,2" />
-<FLD name="ULABEL" seqno="6" type="S" level="2" pack="0" scale="0" length="16"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="103" />
-<FLD name="ULAN" seqno="7" type="S" level="2" pack="0" scale="0" length="3"
- pointer="0" inum="1" ufocc="0" mandatory="yes" idxnum="1" idxsnr="104" />
-<FLD name="MSGTYPE" seqno="8" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVERS" seqno="9" type="S" level="2" pack="0" scale="0" length="12"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UDESCR" seqno="10" type="S" level="2" pack="0" scale="0" length="25"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVPOS" seqno="11" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHPOS" seqno="12" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UVSIZ" seqno="13" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UHSIZ" seqno="14" type="S" level="2" pack="0" scale="0" length="6"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="AUTHORIZ" seqno="15" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCLASS" seqno="16" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="LOCREF" seqno="17" type="S" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCONFIRM" seqno="18" type="B" level="2" pack="0" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UAUDIO" seqno="19" type="N" level="2" pack="10" scale="0" length="1"
- pointer="0" inum="0" ufocc="0" />
-<FLD name="UCOMMENT" seqno="20" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",0,0,0,,1,0,1,\1D,0,0,0,," />
-<FLD name="UTEXT" seqno="21" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,1,\1E,0,0,0,,0,0,0,," />
-<FLD name="UWLEVEL" seqno="22" type="S" level="2" pack="141" scale="0" length="0"
- pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
-</DSC>
-<OCC>
-<DAT name="UTIMESTAMP">2014-05-26T08:22:51.15</DAT>
-<DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_EXCEL2010</DAT>
-<DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>Excel 2010 stuff</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_GET_FILETYPES
-   ; @description = return a list of filetypes that are supported by Microfost Excel 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   ; @references = http://msdn.microsoft.com/en-us/library/office/ff198017%28v=office.15%29.aspx
-   params 
-      string p_list : out
-   endparams
-
-   putitem/id p_list, 6, "CSV"
-   putitem/id p_list, 50, "XLSB"	
-   putitem/id p_list, 51, "XLSX"
-   putitem/id p_list, 52, "XLSM"	
-   putitem/id p_list, 56, "XLS"
-   putitem/id p_list, -4158, "TXT"	
-   putitem/id p_list, 36, "PRN"	
-
-   return(0)
-end ;GET_FILETYPES
-
-entry IP_CHE_VERSION
-   ; @description = Check if the version of excel is the same as supported by this component. If not return a negative status.
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   variables 
-      handle v_msexcel
-      string v_nmversion
-   endvariables 
-
-   ; *** Excel ***
-   ; start a new instance of the excel application 
-   newinstance "APPLICATION", v_msexcel
-
-   ; check for the correct version
-;   activate v_msexcel-&gt;GET_VERSION(v_nmversion)
-   v_msexcel-&gt;GET_VERSION(v_nmversion)
-   if (v_nmversion != "14.0")
-      message "This software was written for version 14.0. Your version is %%v_nmversion%%%"
-   else 
-      message "You are using the correct version of VBA (%%v_nmversion%%%)"
-   endif
-
-   deleteinstance v_msexcel
-   return(0)
-end
-
-entry IP_SWI_VISIBLE
-   ; @description = Toggle the visibillity of the Excel application 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle  p_msexcel   : in
-      boolean p_isvisible : in
-   endparams
-   variables 
-      boolean v_isvisible
-   endvariables
-
-   ; init 
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before setting the visibillity"
-   endif 
-
-   ; get the visibillity 
-;   activate p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-   p_msexcel-&gt;"GET_VISIBLE"(v_isvisible)
-
-   ; Toggle the visible
-   if (p_isvisible != v_isvisible)
-;      activate p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-      p_msexcel-&gt;"SET_VISIBLE"(p_isvisible)
-   else 
-      message "Excel application is allready set correctly"
-   endif
-   return(0)
-end ; 
-
-entry IP_NEW_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params
-      handle p_msexcel : out
-   endparams 
-
-   newinstance "APPLICATION", p_msexcel
-   if ($status &gt;=0)
-      message "Application succesfully created"
-   endif 
-   return(0)
-end ; IP_NEW_APPLICATION
-
-entry IP_DEL_MSEXCEL
-   ; @description = create a bew instance of the application signature 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params
-      handle p_msexcel : inout
-   endparams 
-
-   if (p_msexcel != "")
-      deleteinstance p_msexcel
-      if ($status &gt;=0)
-         message "Application succesfully removed"
-      endif 
-   else 
-      message "Handle p_msexcel is empty"
-   endif 
-   return(0)
-end ; IP_DEL_APPLICATION
-
-entry IP_NEW_WORKBOOKS
-   ; @description = create a new workbooks handle
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_msexcel   : in
-      handle p_workbooks : out
-   endparams 
-
-   if (p_msexcel = "")
-      message "You must create an instance of APPLICATION before creating a workbook"
-   else 
-;      activate P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-; according to this thread http://unifaceinfo.com/forum/unifaceintegrations/integrating-msexcel-2010/ using no activate works as well
-      P_msexcel-&gt;"GET_WORKBOOKS"(p_workbooks)
-      if ($status &gt;= 0)
-         message "Workbooks succesfully created"
-      endif 
-   endif 
-   return(0)
-end ; IP_NEW_WORKBOOKS 
-
-entry IP_DEL_WORKBOOKS
-   ; @description = delete a workbooks handle
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbooks : in
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   deleteinstance p_workbooks
-   if ($status &gt;= 0)
-      message "Workbooks succesfully removed"
-   endif
-
-   return(0)
-end ; IP_DEL_WORKBOOKS
-
-entry IP_ADD_WORKBOOK
-   ; @description = Create a new workbook object 
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbooks  : in
-      string p_nmtemplate : in
-      handle p_workbook   : out
-   endparams 
-
-   if (p_workbooks = "")
-      message "Workbooks handle is empty"
-      return(0)
-   endif 
-
-   ; if no template is entered make it optional. This is done by parsing a - [minus] character. Donot parse an empty "" string
-   if (p_nmtemplate = "")
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, -)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   else 
-      ; create a new workbook without a template
-      p_workbooks-&gt;ADD(p_workbook, p_nmtemplate)
-      if ($status &gt;= 0)
-         message "Workbook succesfully created"
-      endif 
-   endif 
-
-   return(0)
-end ; IP_ADD_WORKBOOK
-
-entry IP_OPEN_WORKBOOK
-   ; @description = open an excel workbook
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   ; @issues = because i havenot figured out how to pass the - [default] sign as a parameter without using "" (), this entry only allows for filename and filetype and the rest of the parameters are passed as default.
-   params 
-      handle  p_workbooks : in 
-      string  p_nmfile    : in
-      numeric p_nmtype    : in
-      handle  p_workbook  : in 
-   endparams 
-
-   if (p_workbooks = "")
-      message "Handle p_workbooks is empty"
-      return(0)
-   endif 
-
-   if (p_nmfile = "")
-      message "Please provide a valid filename"
-      return(0)
-   endif 
-
-   if (p_nmtype = "")
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, -, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   else 
-      p_workbooks-&gt;"OPEN"(p_workbook, p_nmfile, p_nmtype, -, -, -, -, -, -, -, -, -, -, -, -, -)
-      if ($status &gt;=0)
-         message "File %%p_nmfile%%% successfully opened"
-      endif 
-   endif
- 
-   return(0)
-end ; IP_OPEN_DOCUMENT
-
-entry IP_GET_ACTIVESHEET
-   ; @description = create set the activesheet in a workbook
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_workbook    : in
-      handle p_activesheet : out
-   endparams 
-
-   if (p_workbook = "")
-      message "Workbook handle is empty"
-      return(0)
-   endif 
-
-   p_workbook-&gt;GET_ACTIVESHEET(p_activesheet)
-   if ($status &gt;= 0)
-      message "Activesheet succesfully set"
-   endif 
-
-   return(0)
-end ; IP_GET_ACTIVESHEET
-
-entry IP_GET_ACTIVECELL
-   ; @description = set the current active cell, or range of cells in the active worksheet
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activesheet  : in
-      string p_nmrangestart : in
-      string p_nmrangeend   : in
-      handle p_activecell   : out
-   endparams 
-
-   if (p_activesheet = "")
-      message "Activesheet handle is empty"
-      return(0)
-   endif 
-   if (p_nmrangestart = "")
-      message "Start coordinates are empty"
-      return(0)
-   endif 
-
-   if (p_nmrangeend = "")
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, -)
-   else 
-      p_activesheet-&gt;GET_RANGE(p_activecell, p_nmrangestart, p_nmrangeend)
-   endif 
-
-   if ($status &gt;= 0)
-      message "Range succesfully retrieved"
-   endif 
-   return(0)
-end ; IP_GET_ACTIVECELL
-
-entry IP_SET_FORMULAR1C1
-   ; @description = put a formula in the active cell
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_FORMULAR1C1(p_value)
-   if ($status &gt;= 0)
-      message "FORMULAR1C1 set on activecell"
-   endif 
-
-   return(0)
-end ; SET_FORMULAR1C1
-
-entry IP_SET_VALUE
-   ; @description = put a value in the active cell
-   ; @author = Dennis E.J. Vorst 
-   ; @company = Material ICT Solutions
-   ; @date = 26-5-2014
-   ; @version 1.0.0
-   params 
-      handle p_activecell : in 
-      string p_value      : in 
-   endparams 
-
-   if (p_activecell = "")
-      message "Activecell handle is empty"
-      return(0)
-   endif 
-
-   p_activecell-&gt;SET_VALUE(-, p_value)
-   if ($status &gt;= 0)
-      message "Value set on activecell"
-   endif 
-
-   return(0)
-
-end ; IP_SET_VALUE</DAT>
+</DAT>
 </OCC>
 </TABLE>
 </UNIFACE>

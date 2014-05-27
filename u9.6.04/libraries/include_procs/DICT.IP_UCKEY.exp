@@ -13,8 +13,9 @@
  pointer="0" inum="0" ufocc="0" />
 </DSC>
 <OCC>
-<DAT name="ULIBRARY">MATERIAL</DAT>
-<DAT name="UTIMESTAMP">2014-05-23T10:01:12.69</DAT>
+<DAT name="ULIBRARY">DICT</DAT>
+<DAT name="UDESCR" xml:space='preserve'>Dictionary library</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T07:16:32.44</DAT>
 </OCC>
 </TABLE>
 <TABLE>
@@ -66,66 +67,38 @@
  pointer="0" inum="0" ufocc="0" varinfo=",1,0,2,\1F\C1,0,0,0,,0,0,0,," />
 </DSC>
 <OCC>
-<DAT name="UTIMESTAMP">2014-01-17T09:53:23.22</DAT>
+<DAT name="UTIMESTAMP">2014-05-27T11:49:56.30</DAT>
 <DAT name="USUB">I</DAT>
-<DAT name="UVAR">MATERIAL</DAT>
-<DAT name="ULABEL">IP_LIST</DAT>
+<DAT name="UVAR">DICT</DAT>
+<DAT name="ULABEL">IP_UCKEY</DAT>
 <DAT name="ULAN">P</DAT>
-<DAT name="UDESCR" xml:space='preserve'>List functions</DAT>
-<DAT name="UTEXT" xml:space='preserve'>entry IP_TRIM_LISTITEMS
-   ; @description = remove the trimvalue from the beginning and end of each listitem
-   params 
-      string p_list_in   : in
-      string p_trimvalue : in
-      string p_list_out  : out
-   endparams 
+<DAT name="UDESCR" xml:space='preserve'>UCKEY include proc</DAT>
+<DAT name="UTEXT" xml:space='preserve'>entry IP_CRE_UCKEY
+   params
+      string  p_nmmodel    : in
+      string  p_nmentity   : in
+      numeric p_nrsequence : in
+      string  p_cdtype     : in
+      string  p_nmfields   : in
+   endparams
    variables 
-      string v_item
+      string v_trigger
    endvariables 
 
-   forlist v_item in p_list_in
-      v_item = $rtrim(v_item, p_trimvalue)
-      v_item = $ltrim(v_item, p_trimvalue)
+   if ($occmod("UCKEY") &gt; 0)
+      creocc "UCKEY", -1
+   endif
 
-      putitem p_list_out, -1, v_item
-   endfor
+   UTIMESTAMP.UCKEY = $datim 
+   U_VLAB.UCKEY  = p_nmmodel
+   U_TLAB.UCKEY  = p_nmentity
+   U_KSEQ.UCKEY  = p_nrsequence
+   U_KTYP.UCKEY  = p_cdtype
+   U_FLABS.UCKEY = p_nmfields
+   UVALKEY.UCKEY = "T"
+
    return(0)
-end ; IP_TRIM_LISTITEMS
-
-entry IP_PURGE_LISTITEMS
-   ; @description = Remove the blank lines from the list 
-   params 
-      string p_list_in  : in
-      string p_list_out : out
-   endparams 
-   variables 
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list_in
-      if (v_item != "")
-         putitem p_list_out, -1, v_item
-      endif 
-   endfor 
-   return(0)
-end ; IP_PURGE_LISTITEMS
-
-entry IP_COUNT_VALUES
-   ; @name = IP_COUNT_VALUES
-   ; @description = count the number of values in a list 
-   params 
-      string  p_list  : in
-      numeric p_count : out
-   endparams 
-   variables
-      string v_item
-   endvariables 
-
-   forlist v_item in p_list
-      p_count += 1
-   endfor 
-   return(0)
-end ; IP_COUNT_VALUES</DAT>
+end ; IP_CRE_UCKEY</DAT>
 </OCC>
 </TABLE>
 </UNIFACE>
